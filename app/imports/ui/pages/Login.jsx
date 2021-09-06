@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Container, Form, Grid, Message, Segment, Image } from 'semantic-ui-react';
+import { Container, Form, Grid, Message, Segment, Image, Header } from 'semantic-ui-react';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -40,7 +40,8 @@ export default class Login extends React.Component {
     const gold = {
       backgroundColor: '#AA986D',
       borderRadius: '25px',
-      padding: '31px',
+      padding: '30px',
+      margin: '40px',
     };
     // const style variable for UH Logo
     const image = {
@@ -54,12 +55,13 @@ export default class Login extends React.Component {
     return (
       // Form for user to login. Added Grid element to the lower portion of the form to allow alignment of text.
       <div className="login-background">
-        <Container id="signin-page" centered>
+        <Container id="signin-page" centered fluid>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2} stackable>
             <Grid.Column>
               <div className="login">
                 <Form onSubmit={this.submit}>
-                  <Segment stacked className="test" style={gold}>
+                  <Segment style={gold}>
+                    <Header as='h1' textAlign='center' inverted> Welcome to CovidSight</Header>
                     <Grid stackable>
                       <Grid.Column width={5} style={image}>
                         <Image src="/images/UH Logo.png" size='small' circular centered/>

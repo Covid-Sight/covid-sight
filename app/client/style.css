@@ -2,9 +2,7 @@
   padding-top: 300px;
   background-size: cover;
   align-items: center;
-  justify-content: center;
   height: 100vh;
-  margin: 0;
 }
 
 .login-register {
@@ -14,4 +12,6 @@
 
 .login-background {
   background-color: #F5F3ED;
+  align-items: center;
+  padding-bottom: 300px;
 }
