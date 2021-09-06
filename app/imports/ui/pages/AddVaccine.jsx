@@ -37,7 +37,7 @@ class AddVaccine extends React.Component {
           swal('Error', error.message, 'error');
         } else {
           swal('Success', 'Vaccine information submitted successfully', 'success');
-          console.log(data)
+          console.log(data);
           formRef.reset();
         }
       });
