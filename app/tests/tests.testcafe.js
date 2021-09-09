@@ -1,6 +1,7 @@
-import { landingPage } from './landing.page';
-import { signinPage } from './signin.page';
+import { homePage } from './home.page';
+import { loginPage } from './login.page';
 import { signoutPage } from './signout.page';
+import { signupPage } from './signup.page';
 import { navBar } from './navbar.component';
 
 /* global fixture:false, test:false */
@@ -9,16 +10,31 @@ import { navBar } from './navbar.component';
 const credentials = { username: 'john@foo.com', password: 'changeme' };
 
 fixture('meteor-application-template-react localhost test with default db')
-    .page('http://localhost:3000');
+  .page('http://localhost:3000');
 
-test('Test that landing page shows up', async (testController) => {
-  await landingPage.isDisplayed(testController);
+test('Test that login page shows up', async (testController) => {
+  await loginPage.isDisplayed(testController);
+  await testController.wait(500);
+  await loginPage.login(testController, credentials.username, credentials.password);
 });
 
-test('Test that signin and signout work', async (testController) => {
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
+test('Test that signup page shows up', async (testController) => {
+  await loginPage.isDisplayed(testController);
+  await testController.wait(500);
+  await loginPage.gotoRegister(testController);
+  await signupPage.isDisplayed(testController);
+  await testController.wait(500);
+  await signupPage.signupUser(testController, credentials.username, credentials.password);
+});
+
+test('Test that signed in landing page works and signout work', async (testController) => {
+  // await navBar.gotoSigninPage(testController);
+  // await signinPage.signin(testController, credentials.username, credentials.password);
+  await loginPage.login(testController, credentials.username, credentials.password);
+  await testController.wait(500);
   await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoHomePage(testController, credentials.username);
+  await homePage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
