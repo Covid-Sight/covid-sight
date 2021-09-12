@@ -21,23 +21,21 @@ import AddVaccine from '../pages/AddVaccine';
 class App extends React.Component {
   render() {
     const LoggedInRoutes = () => (
-      <Router>
-        <div>
-          <NavBar/>
-          <Switch>
-            <Route exact path="/home" component={Home}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/signout" component={Signout}/>
-            <Route path="/vaccine" component={AddVaccine}/>
-            <ProtectedRoute path="/list" component={ListStuff}/>
-            <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
-            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
-            <Route component={NotFound}/>
-          </Switch>
-          <Footer/>
-        </div>
-      </Router>
+      <div>
+        <NavBar/>
+        <Switch>
+          <Route exact path="/home" component={Home}/>
+          <Route path="/signup" component={Signup}/>
+          <Route path="/signout" component={Signout}/>
+          <Route path="/vaccine" component={AddVaccine}/>
+          <ProtectedRoute path="/list" component={ListStuff}/>
+          <ProtectedRoute path="/add" component={AddStuff}/>
+          <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
+          <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+          <Route component={NotFound}/>
+        </Switch>
+        <Footer/>
+      </div>
     );
 
     return (

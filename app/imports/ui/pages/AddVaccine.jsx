@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, AutoField, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -31,7 +31,8 @@ class AddVaccine extends React.Component {
   submit(data, formRef) {
     const { name, patientID, vaccineType, dose1, clinic1, dose2, clinic2 } = data;
     const owner = Meteor.user().username;
-    Vaccine.collection.insert({ name, patientID, vaccineType, dose1, clinic1, dose2, clinic2 },
+    // added owner field in (was giving an ESLint error. WIll need to check with Eric -Glen
+    Vaccine.collection.insert({ name, patientID, vaccineType, dose1, clinic1, dose2, clinic2, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
