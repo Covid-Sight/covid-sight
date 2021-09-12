@@ -1,0 +1,8 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://irenem:L8ehLxJWhXh963FtJ@SG-galaxycluster-38726.servers.mongodirector.com:27017,SG-galaxycluster-38727.servers.mongodirector.com:27017/covid-tracking-meteorapp-com?replicaSet=RS-galaxycluster-0&ssl=true",
+      "MONGO_OPLOG_URL": "mongodb://mongodb/local"
+    }
+  }
+}
