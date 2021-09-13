@@ -13,6 +13,7 @@ class Home extends React.Component {
     const complete = {
       borderColor: 'green',
     };
+
     // Checks if user completed check-in and vaccine upload
     function isComplete() {
       if (true) {
@@ -22,8 +23,9 @@ class Home extends React.Component {
       return complete;
 
     }
+
     return (
-      <div className="home-page">
+      <div className="home-page" id="home-page">
         <Grid stackable id='landing-page' textAlign='center' container>
           <Grid.Column width={4}>
             <SideBar/>
@@ -35,17 +37,17 @@ class Home extends React.Component {
                 <p>Help keep our campus safe by completing your daily health check-in!</p>
                 <List ordered>
                   <List.Item>
-                        Check your symptoms.
+                      Check your symptoms.
                   </List.Item>
                   <List.Item>
-                        Keep track of your symptoms every day.
+                      Keep track of your symptoms every day.
                   </List.Item>
                 </List>
                 {/* CHANGE "/add" TO LINK TO CHECK SYMPTOMS PAGE */}
                 <Button className="gold-button" circular inverted icon labelPosition='left'
                   as={NavLink} exact to="/add" key='check'>
                   <Icon name='heart outline'/>
-                        Check Your Symptoms
+                    Check Your Symptoms
                 </Button>
               </div>
             </Segment>
@@ -57,7 +59,7 @@ class Home extends React.Component {
                 <Button className="gold-button" circular inverted icon labelPosition='left'
                   as={NavLink} exact to="/vaccine" key='check'>
                   <Icon name='upload'/>
-                        Upload Your Vaccine Information
+                    Upload Your Vaccine Information
                 </Button>
               </div>
 
