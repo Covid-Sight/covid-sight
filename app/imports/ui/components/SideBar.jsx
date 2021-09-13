@@ -9,23 +9,22 @@ import { Roles } from 'meteor/alanning:roles';
 /** The SideBar appears on the side of every page. Rendered by the App Layout component. */
 class SideBar extends React.Component {
   render() {
-    const menuStyle = { marginBottom: '10px' };
-    return(
-        <div>
-      <Menu borderless icon='labeled' vertical className='home-box'>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/home">
+    return (
+      <div>
+        <Menu borderless icon='labeled' vertical className='home-box'>
+          <Menu.Item as={NavLink} activeClassName="active" exact to="/home">
             <Icon name='home'/>
             Home
-        </Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/add">
+          </Menu.Item>
+          <Menu.Item as={NavLink} activeClassName="active" exact to="/add">
             <Icon name='heart'/>
             Health
-        </Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/vaccine">
+          </Menu.Item>
+          <Menu.Item as={NavLink} activeClassName="active" exact to="/vaccine">
             <Icon name='shield'/>
             Vaccine
-        </Menu.Item>
-      </Menu>
+          </Menu.Item>
+        </Menu>
       </div>
     );
   }

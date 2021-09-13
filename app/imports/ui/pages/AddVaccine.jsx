@@ -1,11 +1,12 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, AutoField, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Vaccine } from '../../api/stuff/Vaccine.js';
+import SideBar from '../components/SideBar';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -48,7 +49,10 @@ class AddVaccine extends React.Component {
     let fRef = null;
     return (
       <Grid container centered>
-        <Grid.Column>
+        <Grid.Column width={2}>
+          <SideBar/>
+        </Grid.Column>
+        <Grid.Column width={8}>
           <Header as="h2" textAlign="center">Add Vaccine Information</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
