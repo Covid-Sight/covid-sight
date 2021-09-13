@@ -54,7 +54,7 @@ export default class Login extends React.Component {
     return (
       // Form for user to login. Added Grid element to the lower portion of the form to allow alignment of text.
       <div className="login-background">
-        <Container id="login-page" centered>
+        <Container id="signin-page" centered>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2} stackable>
             <Grid.Column>
               <div className="login">
@@ -68,7 +68,7 @@ export default class Login extends React.Component {
                       <Grid.Column width={10}>
                         <Form.Input
                           label="Email"
-                          id="login-form-email"
+                          id="signin-form-email"
                           icon="user"
                           iconPosition="left"
                           name="email"
@@ -78,7 +78,7 @@ export default class Login extends React.Component {
                         />
                         <Form.Input
                           label="Password"
-                          id="login-form-password"
+                          id="signin-form-password"
                           icon="lock"
                           iconPosition="left"
                           name="password"
@@ -88,7 +88,7 @@ export default class Login extends React.Component {
                         />
                         <Grid>
                           <Grid.Column width={5}>
-                            <Form.Button id="login-form-submit" content="Login" size="medium"/>
+                            <Form.Button id="signin-form-submit" content="Login" size="medium"/>
                           </Grid.Column>
                           <Grid.Column width={11}>
                             <p className="login-register" style={{ paddingTop: '8px' }}>Need an account? Register <Link id='signup' to='/signup'>here </Link></p>

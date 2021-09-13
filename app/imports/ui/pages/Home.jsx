@@ -5,7 +5,7 @@ import { Grid, Header, Segment, Button, Icon, List } from 'semantic-ui-react';
 /** Renders the home page for when the user is logged in. */
 class Home extends React.Component {
   render() {
-    // Styling for segment box borders
+    // Stylings for segment box borders
     const incomplete = {
       borderColor: '#E20000',
     };
@@ -23,7 +23,7 @@ class Home extends React.Component {
     }
     return (
       <div className="home">
-        <Grid stackable id='home-page' textAlign='center' container>
+        <Grid stackable id='landing-page' textAlign='center' container>
           <Grid.Column width={8} floated="right">
             <Segment className="home-box" style={isComplete()}>
               <div align="left">
