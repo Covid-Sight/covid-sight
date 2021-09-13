@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import SideBar from '../components/SideBar';
 import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import ListStuff from '../pages/ListStuff';
@@ -21,21 +22,24 @@ import AddVaccine from '../pages/AddVaccine';
 class App extends React.Component {
   render() {
     const LoggedInRoutes = () => (
-      <div>
-        <NavBar/>
-        <Switch>
-          <Route exact path="/home" component={Home}/>
-          <Route path="/signup" component={Signup}/>
-          <Route path="/signout" component={Signout}/>
-          <Route path="/vaccine" component={AddVaccine}/>
-          <ProtectedRoute path="/list" component={ListStuff}/>
-          <ProtectedRoute path="/add" component={AddStuff}/>
-          <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
-          <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
-          <Route component={NotFound}/>
-        </Switch>
-        <Footer/>
-      </div>
+      <Router>
+        <div>
+          <NavBar/>
+          {/* <SideBar/> */}
+          <Switch>
+            <Route exact path="/home" component={Home}/>
+            <Route path="/signup" component={Signup}/>
+            <Route path="/signout" component={Signout}/>
+            <Route path="/vaccine" component={AddVaccine}/>
+            <ProtectedRoute path="/list" component={ListStuff}/>
+            <ProtectedRoute path="/add" component={AddStuff}/>
+            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
+            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+            <Route component={NotFound}/>
+          </Switch>
+          <Footer/>
+        </div>
+      </Router>
     );
 
     return (

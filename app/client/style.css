@@ -1,9 +1,11 @@
-.home {
-    background-color: #F5F3ED;
+.home-page {
+  margin: 5em 0em 5em 0em;
+  background-color: #F5F3ED;
+  /* height: 100%;  */
 }
 
 .home-box {
-    border-radius: 25px !important;
+  border-radius: 25px !important;
 }
 
 .ui.button.gold-button {
@@ -13,6 +15,15 @@
 .body {
     background-color: #F5F3ED;
 }
+
+body {
+  background-color: #F5F3ED !important;
+}
+
+.item active {
+  border-radius: 25px !important;
+}
+
 .login {
   padding-top: 300px;
   background-size: cover;
