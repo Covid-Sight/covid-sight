@@ -1,14 +1,13 @@
 import React from 'react';
-import { Grid, Header, List, Container, Segment } from 'semantic-ui-react';
+import { Grid, Header, List, Container, Segment, Button } from 'semantic-ui-react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, DateField, ErrorsField, SelectField, SubmitField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField } from 'uniforms-semantic';
 import { Check } from '../../api/stuff/Check';
 
 const formSchema = new SimpleSchema({
-  date: String,
   condition: {
     type: String,
     allowedValues: ['Healthy', 'Sick'],
@@ -22,7 +21,8 @@ class Checkin extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { date, condition } = data;
+    const date = new Date();
+    const { condition } = data;
     const owner = Meteor.user().username;
     Check.collection.insert({ date, condition, owner },
       (error) => {
@@ -77,16 +77,22 @@ class Checkin extends React.Component {
             </List.List>
           </List.Item>
         </List>
-        <Grid.Row>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-            <Segment>
-              <DateField name={'date'}/>
-              <SelectField name={'condition'}/>
-              <SubmitField value={'Submit'}/>
+        <Grid columns={2}>
+          <Grid.Column>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+              <HiddenField name={'condition'} value={'Healthy'}/>
+              <Button value={'Submit'} size={'massive'} floated={'right'}>Yes</Button>
               <ErrorsField/>
-            </Segment>
-          </AutoForm>
-        </Grid.Row>
+            </AutoForm>
+          </Grid.Column>
+          <Grid.Column>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+              <HiddenField name={'condition'} value={'Sick'}/>
+              <Button name={'condition'} value={'Submit'} size={'massive'}>No</Button>
+              <ErrorsField/>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
       </Container>
     );
   }

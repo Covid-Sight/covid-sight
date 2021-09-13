@@ -28,7 +28,7 @@ class History extends React.Component {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {this.props.checks.map((check) => <CheckItem key={check._id} check={check} />)}
+            {this.props.checks.slice(0).reverse().map((check) => <CheckItem key={check._id} check={check} />)}
           </Table.Body>
         </Table>
       </Container>
