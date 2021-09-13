@@ -15,13 +15,13 @@ fixture('meteor-application-template-react localhost test with default db')
 
 test('Test that login page shows up', async (testController) => {
   await loginPage.isDisplayed(testController);
-  await testController.wait(500);
+  await testController.wait(5000);
   await loginPage.login(testController, credentials.username, credentials.password);
 });
 
 test('Test that signup page shows up', async (testController) => {
   await loginPage.isDisplayed(testController);
-  await testController.wait(500);
+  await testController.wait(5000);
   await loginPage.gotoRegister(testController);
   await signupPage.isDisplayed(testController);
   await testController.wait(500);
@@ -31,6 +31,8 @@ test('Test that signup page shows up', async (testController) => {
 test('Test that signed in landing page works and signout work', async (testController) => {
   // await navBar.gotoSigninPage(testController);
   // await signinPage.signin(testController, credentials.username, credentials.password);
+  await loginPage.isDisplayed(testController);
+  await testController.wait(5000);
   await loginPage.login(testController, credentials.username, credentials.password);
   await testController.wait(500);
   await navBar.isLoggedIn(testController, credentials.username);
