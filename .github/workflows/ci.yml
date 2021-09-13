@@ -1,4 +1,4 @@
-name: ci-covid-sight
+name: ci-meteor-application-template-react
 
 on:
   push:
