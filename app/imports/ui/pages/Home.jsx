@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import SideBar from '../components/SideBar';
 import { Grid, Header, Segment, Button, Icon, List } from 'semantic-ui-react';
+import SideBar from '../components/SideBar';
 
 /** Renders the home page for when the user is logged in. */
 class Home extends React.Component {
