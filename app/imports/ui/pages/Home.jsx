@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import SideBar from '../components/SideBar';
 import { Grid, Header, Segment, Button, Icon, List } from 'semantic-ui-react';
 
 /** Renders the home page for when the user is logged in. */
@@ -22,9 +23,12 @@ class Home extends React.Component {
 
     }
     return (
-      <div className="home">
+      <div className="home-page">
         <Grid stackable id='landing-page' textAlign='center' container>
-          <Grid.Column width={8} floated="right">
+          <Grid.Column width={4}>
+            <SideBar/>
+          </Grid.Column>
+          <Grid.Column width={8}>
             <Segment className="home-box" style={isComplete()}>
               <div align="left">
                 <Header as='h3' textAlign='left'>Daily Health Check-In</Header>
