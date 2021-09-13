@@ -32,7 +32,8 @@ class AddVaccine extends React.Component {
   submit(data, formRef) {
     const { name, patientID, vaccineType, dose1, clinic1, dose2, clinic2 } = data;
     const owner = Meteor.user().username;
-    Vaccine.collection.insert({ name, patientID, vaccineType, dose1, clinic1, dose2, clinic2 },
+    // added owner field in (was giving an ESLint error. WIll need to check with Eric -Glen
+    Vaccine.collection.insert({ name, patientID, vaccineType, dose1, clinic1, dose2, clinic2, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
