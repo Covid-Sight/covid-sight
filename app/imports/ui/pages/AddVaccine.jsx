@@ -7,6 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Vaccine } from '../../api/stuff/Vaccine.js';
 import SideBar from '../components/SideBar';
+import NavBar from '../components/NavBar';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -49,27 +50,32 @@ class AddVaccine extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
-        <Grid.Column width={2}>
-          <SideBar/>
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <Header as="h2" textAlign="center">Add Vaccine Information</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-            <Segment>
-              <TextField name='name'/>
-              <TextField name='patientID'/>
-              <SelectField name='vaccineType'/>
-              <DateField name='dose1' />
-              <TextField name='clinic1' />
-              <DateField name='dose2' />
-              <TextField name='clinic2' />
-              <SubmitField value='Submit'/>
-              <ErrorsField/>
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+      <div>
+        <NavBar/>
+        <Grid container centered>
+          <Grid.Column width={2}>
+            <SideBar/>
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Header as="h2" textAlign="center">Add Vaccine Information</Header>
+            <AutoForm ref={ref => {
+              fRef = ref;
+            }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+              <Segment>
+                <TextField name='name'/>
+                <TextField name='patientID'/>
+                <SelectField name='vaccineType'/>
+                <DateField name='dose1'/>
+                <TextField name='clinic1'/>
+                <DateField name='dose2'/>
+                <TextField name='clinic2'/>
+                <SubmitField value='Submit'/>
+                <ErrorsField/>
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }

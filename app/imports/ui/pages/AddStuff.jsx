@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Stuffs } from '../../api/stuff/Stuff';
+import NavBar from '../components/NavBar';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -42,20 +43,23 @@ class AddStuff extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Add Stuff</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-            <Segment>
-              <TextField name='name'/>
-              <NumField name='quantity' decimal={false}/>
-              <SelectField name='condition'/>
-              <SubmitField value='Submit'/>
-              <ErrorsField/>
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+      <div>
+        <NavBar/>
+        <Grid container centered>
+          <Grid.Column>
+            <Header as="h2" textAlign="center">Add Stuff</Header>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+              <Segment>
+                <TextField name='name'/>
+                <NumField name='quantity' decimal={false}/>
+                <SelectField name='condition'/>
+                <SubmitField value='Submit'/>
+                <ErrorsField/>
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }
