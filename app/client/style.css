@@ -14,6 +14,7 @@
 
 .body {
     background-color: #F5F3ED;
+    padding-top: 100px;
 }
 
 body {
@@ -45,4 +46,9 @@ body {
 
 h1 {
   padding-top: 50px !important;
+
+.sign-out {
+  background-color: #F5F3ED;
+  padding-top: 300px;
+  align-items: center;
 }

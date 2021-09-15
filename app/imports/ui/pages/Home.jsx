@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Grid, Header, Segment, Button, Icon, List } from 'semantic-ui-react';
 import SideBar from '../components/SideBar';
+import NavBar from '../components/NavBar';
 
 /** Renders the home page for when the user is logged in. */
 class Home extends React.Component {
@@ -25,28 +26,30 @@ class Home extends React.Component {
     }
 
     return (
-      <div className="home-page" id="home-page">
-        <Grid stackable id='landing-page' textAlign='center' container>
-          <Grid.Column width={4}>
-            <SideBar/>
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <Segment className="home-box" style={isComplete()}>
-              <div align="left">
-                <Header as='h3' textAlign='left'>Daily Health Check-In</Header>
-                <p>Help keep our campus safe by completing your daily health check-in!</p>
-                <List ordered>
-                  <List.Item>
+      <div>
+        <NavBar/>
+        <div className="home-page" id="home-page">
+          <Grid stackable id='landing-page' textAlign='center' container>
+            <Grid.Column width={4}>
+              <SideBar/>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Segment className="home-box" style={isComplete()}>
+                <div align="left">
+                  <Header as='h3' textAlign='left'>Daily Health Check-In</Header>
+                  <p>Help keep our campus safe by completing your daily health check-in!</p>
+                  <List ordered>
+                    <List.Item>
                       Check your symptoms.
-                  </List.Item>
-                  <List.Item>
+                    </List.Item>
+                    <List.Item>
                       Keep track of your symptoms every day.
-                  </List.Item>
-                </List>
-                {/* CHANGE "/add" TO LINK TO CHECK SYMPTOMS PAGE */}
-                <Button className="gold-button" circular inverted icon labelPosition='left'
-                  as={NavLink} exact to="/checkin" key='checkin'>
-                  <Icon name='heart outline'/>
+                    </List.Item>
+                  </List>
+                  {/* CHANGE "/add" TO LINK TO CHECK SYMPTOMS PAGE */}
+                  <Button className="gold-button" circular inverted icon labelPosition='left'
+                    as={NavLink} exact to="/checkin" key='checkin'>
+                    <Icon name='heart outline'/>
                     Check Your Symptoms
                 </Button>
                 <Button className="gold-button" circular inverted icon labelPosition='left'
@@ -80,22 +83,48 @@ class Home extends React.Component {
                 <div>
                   <a href="https://www.clinicallabs.com/appt/uhtest/">Other COVID Testing Programs</a>
                 </div>
-              </div>
-            </Segment>
-            <Segment className="home-box">
-              <div align="left">
-                <Header as='h5' textAlign='left'>Resources</Header>
-                <div>
-                  <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC Guidance</a>
-                </div>
-                <div>
-                  <a href="https://health.hawaii.gov/coronavirusdisease2019/">Hawai&apos;i Guidance</a>
+              </Segment>
+              <Segment className="home-box" style={isComplete()}>
+                <div align="left">
+                  <Header as='h3' textAlign='left'>Vaccine Status</Header>
+                  <p>You have not uploaded your vaccine information yet!</p>
+                  {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
+                  <Button className="gold-button" circular inverted icon labelPosition='left'
+                    as={NavLink} exact to="/vaccine" key='check'>
+                    <Icon name='upload'/>
+                    Upload Your Vaccine Information
+                  </Button>
                 </div>
 
-              </div>
-            </Segment>
-          </Grid.Column>
-        </Grid>
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={4}>
+              <Segment className="home-box">
+                <div align="left">
+                  <Header as='h5' textAlign='left'>Get COVID-19 Testing</Header>
+                  <div>
+                    <a href="https://www.clinicallabs.com/appt/uhtest/">UH Provided COVID Testing</a>
+                  </div>
+                  <div>
+                    <a href="https://www.clinicallabs.com/appt/uhtest/">Other COVID Testing Programs</a>
+                  </div>
+                </div>
+              </Segment>
+              <Segment className="home-box">
+                <div align="left">
+                  <Header as='h5' textAlign='left'>Resources</Header>
+                  <div>
+                    <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC Guidance</a>
+                  </div>
+                  <div>
+                    <a href="https://health.hawaii.gov/coronavirusdisease2019/">Hawai&apos;i Guidance</a>
+                  </div>
+
+                </div>
+              </Segment>
+            </Grid.Column>
+          </Grid>
+        </div>
       </div>
 
     );

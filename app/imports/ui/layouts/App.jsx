@@ -19,13 +19,14 @@ import EditCheck from '../pages/EditCheck';
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
   render() {
-    const LoggedInRoutes = () => (
+    return (
       <Router>
         <div>
           <Switch>
-            <Route exact path="/home" component={Home}/>
+            <Route exact path="/" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
+            <ProtectedRoute exact path="/home" component={Home}/>
             <Route path="/vaccine" component={AddVaccine}/>
             <ProtectedRoute path="/history" component={History}/>
             <ProtectedRoute path="/checkin" component={Checkin}/>
@@ -33,19 +34,9 @@ class App extends React.Component {
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>
           </Switch>
-          <Footer/>
+          {/* <Footer/> */}
         </div>
       </Router>
-    );
-
-    return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Login}/>
-          <Route component={LoggedInRoutes}/>
-        </Switch>
-      </Router>
-
     );
   }
 }
