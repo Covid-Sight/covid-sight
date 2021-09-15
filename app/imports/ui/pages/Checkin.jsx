@@ -38,9 +38,10 @@ class Checkin extends React.Component {
 
   render() {
     let fRef = null;
+    const spacing = { paddingTop: '50px' };
     return (
       <Container>
-        <Header as='h1' textAlign='center'>Do any of the following apply to you?</Header>
+        <Header as='h1' style={spacing} textAlign='center'>Do any of the following apply to you?</Header>
         <Grid stackable container>
           <Grid.Column width={2}>
             <SideBar/>
@@ -89,14 +90,14 @@ class Checkin extends React.Component {
         <Grid columns={2}>
           <Grid.Column>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-              <HiddenField name={'condition'} value={'Healthy'}/>
+              <HiddenField name={'condition'} value={'Sick'}/>
               <Button value={'Submit'} size={'massive'} floated={'right'}>Yes</Button>
               <ErrorsField/>
             </AutoForm>
           </Grid.Column>
           <Grid.Column>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-              <HiddenField name={'condition'} value={'Sick'}/>
+              <HiddenField name={'condition'} value={'Healthy'}/>
               <Button name={'condition'} value={'Submit'} size={'massive'}>No</Button>
               <ErrorsField/>
             </AutoForm>

@@ -26,14 +26,13 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute exact path="/home" component={Home}/>
-            <Route path="/vaccine" component={AddVaccine}/>
+            <ProtectedRoute path="/vaccine" component={AddVaccine}/>
             <ProtectedRoute path="/history" component={History}/>
             <ProtectedRoute path="/checkin" component={Checkin}/>
             <ProtectedRoute path="/edit/:_id" component={EditCheck}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>
           </Switch>
-          {/* <Footer/> */}
         </div>
       </Router>
     );

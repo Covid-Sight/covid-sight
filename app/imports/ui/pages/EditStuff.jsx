@@ -25,8 +25,8 @@ class EditStuff extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
-
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
+
   renderPage() {
     return (
       <Grid container centered>

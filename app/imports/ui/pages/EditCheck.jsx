@@ -29,9 +29,11 @@ class EditCheck extends React.Component {
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
+    const spacing = { paddingTop: '50px' };
     return (
       <Container>
-        <Header as="h1" textAlign="center" className="heading" id="heading">Editing for Check-in: {this.props.doc.date}</Header>
+        <Header as="h1" textAlign="center" className="heading" id="heading" style={spacing}>Editing for
+            Check-in: {this.props.doc.date}</Header>
         <Grid stackable>
           <Grid.Column width={2}>
             <SideBar/>
@@ -40,8 +42,9 @@ class EditCheck extends React.Component {
             <List bulleted>
               <List.Item>Have you tested positive for COVID-19 and are on home isolation?</List.Item>
               <List.Item>Check for symptoms of illness: If you have any symptoms of illness, do not come to campus
-                or workplace. Do you currently have any of the following symptoms that are new, worsening and not attributable
-                to a pre-existing condition?
+                  or workplace. Do you currently have any of the following symptoms that are new, worsening and not
+                  attributable
+                  to a pre-existing condition?
               <List.List>
                 <List.Item>Fever greater than 100.4 °F or feeling feverish (chills, sweating)</List.Item>
                 <List.Item>Cough</List.Item>
@@ -57,20 +60,24 @@ class EditCheck extends React.Component {
               </List.List>
               </List.Item>
               <List.Item>
-                Check for Recent COVID-19 Exposure:
+                  Check for Recent COVID-19 Exposure:
                 <List.List>
                   <List.Item>
-                    Have you traveled out of the state and are currently under quarantine orders by the Department of Health
-                    or your medical care provider?
+                      Have you traveled out of the state and are currently under quarantine orders by the Department of
+                      Health
+                      or your medical care provider?
                   </List.Item>
                   <List.Item>
-                    Are you unvaccinated and have been in close contact ( 6 feet for ≥ 15 minutes, cumulatively, over a
-                    24-hour period) with anyone who has an active, diagnosed case of COVID-19?  Note: Healthcare
-                    students/personnel wearing appropriate PPE at ALL TIMES while caring for a patient with COVID-19 would
-                    NOT be considered a close contact (ref. DOH medical advisory #16)
+                      Are you unvaccinated and have been in close contact ( 6 feet for ≥ 15 minutes, cumulatively, over
+                      a
+                      24-hour period) with anyone who has an active, diagnosed case of COVID-19? Note: Healthcare
+                      students/personnel wearing appropriate PPE at ALL TIMES while caring for a patient with COVID-19
+                      would
+                      NOT be considered a close contact (ref. DOH medical advisory #16)
                   </List.Item>
-                  <List.Item>Has the Department of Health told you that you have been in contact with a person with COVID-19
-                    AND you are UNvaccinated?</List.Item>
+                  <List.Item>Has the Department of Health told you that you have been in contact with a person with
+                      COVID-19
+                      AND you are UNvaccinated?</List.Item>
                 </List.List>
               </List.Item>
             </List>
