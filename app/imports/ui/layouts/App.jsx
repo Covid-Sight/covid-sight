@@ -7,15 +7,15 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 // import SideBar from '../components/SideBar';
 // import Footer from '../components/Footer';
 import Home from '../pages/Home';
-import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
-import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import AddVaccine from '../pages/AddVaccine';
+import Checkin from '../pages/Checkin';
+import History from '../pages/History';
+import EditCheck from '../pages/EditCheck';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -29,10 +29,10 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute exact path="/home" component={Home}/>
-            <ProtectedRoute path="/vaccine" component={AddVaccine}/>
-            <ProtectedRoute path="/list" component={ListStuff}/>
-            <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
+            <Route path="/vaccine" component={AddVaccine}/>
+            <ProtectedRoute path="/list" component={History}/>
+            <ProtectedRoute path="/checkin" component={Checkin}/>
+            <ProtectedRoute path="/edit/:_id" component={EditCheck}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>
           </Switch>
