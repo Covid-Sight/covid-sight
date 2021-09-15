@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Header, List, Container, Segment, Button } from 'semantic-ui-react';
+import { Grid, Header, List, Container, Button } from 'semantic-ui-react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField } from 'uniforms-semantic';
 import { Check } from '../../api/stuff/Check';
 
 const formSchema = new SimpleSchema({
