@@ -9,7 +9,7 @@ class LoginPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
-    await testController.wait(25000).expect(this.pageSelector.exists).ok();
+    await testController.wait(40000).expect(this.pageSelector.exists).ok();
   }
 
   async gotoRegister(testController) {
