@@ -51,7 +51,37 @@ class Home extends React.Component {
                     as={NavLink} exact to="/checkin" key='checkin'>
                     <Icon name='heart outline'/>
                     Check Your Symptoms
-                  </Button>
+                </Button>
+                <Button className="gold-button" circular inverted icon labelPosition='left'
+                  as={NavLink} exact to="/history" key='checkin'>
+                  <Icon name='heart outline'/>
+                  History
+                </Button>
+              </div>
+            </Segment>
+            <Segment className="home-box" style={isComplete()}>
+              <div align="left">
+                <Header as='h3' textAlign='left'>Vaccine Status</Header>
+                <p>You have not uploaded your vaccine information yet!</p>
+                {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
+                <Button className="gold-button" circular inverted icon labelPosition='left'
+                  as={NavLink} exact to="/vaccine" key='check'>
+                  <Icon name='upload'/>
+                    Upload Your Vaccine Information
+                </Button>
+              </div>
+
+            </Segment>
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <Segment className="home-box">
+              <div align="left">
+                <Header as='h5' textAlign='left'>Get COVID-19 Testing</Header>
+                <div>
+                  <a href="https://www.clinicallabs.com/appt/uhtest/">UH Provided COVID Testing</a>
+                </div>
+                <div>
+                  <a href="https://www.clinicallabs.com/appt/uhtest/">Other COVID Testing Programs</a>
                 </div>
               </Segment>
               <Segment className="home-box" style={isComplete()}>

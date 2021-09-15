@@ -44,6 +44,9 @@ body {
   padding-bottom: 300px;
 }
 
+h1 {
+  padding-top: 50px !important;
+
 .sign-out {
   background-color: #F5F3ED;
   padding-top: 300px;

@@ -4,8 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-// import SideBar from '../components/SideBar';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import NotFound from '../pages/NotFound';
@@ -23,14 +22,13 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          {/* <SideBar/> */}
           <Switch>
             <Route exact path="/" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute exact path="/home" component={Home}/>
             <Route path="/vaccine" component={AddVaccine}/>
-            <ProtectedRoute path="/list" component={History}/>
+            <ProtectedRoute path="/history" component={History}/>
             <ProtectedRoute path="/checkin" component={Checkin}/>
             <ProtectedRoute path="/edit/:_id" component={EditCheck}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
