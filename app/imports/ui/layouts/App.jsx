@@ -4,14 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import NavBar from '../components/NavBar';
-// import SideBar from '../components/SideBar';
 import Footer from '../components/Footer';
 import Home from '../pages/Home';
-import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
-import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
@@ -27,14 +22,12 @@ class App extends React.Component {
     const LoggedInRoutes = () => (
       <Router>
         <div>
-          <NavBar/>
-          {/* <SideBar/> */}
           <Switch>
             <Route exact path="/home" component={Home}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <Route path="/vaccine" component={AddVaccine}/>
-            <ProtectedRoute path="/list" component={History}/>
+            <ProtectedRoute path="/history" component={History}/>
             <ProtectedRoute path="/checkin" component={Checkin}/>
             <ProtectedRoute path="/edit/:_id" component={EditCheck}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>

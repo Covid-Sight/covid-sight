@@ -49,6 +49,11 @@ class Home extends React.Component {
                   <Icon name='heart outline'/>
                     Check Your Symptoms
                 </Button>
+                <Button className="gold-button" circular inverted icon labelPosition='left'
+                  as={NavLink} exact to="/history" key='checkin'>
+                  <Icon name='heart outline'/>
+                  History
+                </Button>
               </div>
             </Segment>
             <Segment className="home-box" style={isComplete()}>

@@ -42,3 +42,7 @@ body {
   background-color: #F5F3ED;
   padding-bottom: 300px;
 }
+
+h1 {
+  padding-top: 50px !important;
+}

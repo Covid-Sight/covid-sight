@@ -16,7 +16,7 @@ class SideBar extends React.Component {
             <Icon name='home'/>
             Home
           </Menu.Item>
-          <Menu.Item as={NavLink} activeClassName="active" exact to="/add">
+          <Menu.Item as={NavLink} activeClassName="active" exact to="/checkin">
             <Icon name='heart'/>
             Health
           </Menu.Item>
