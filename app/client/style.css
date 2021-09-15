@@ -14,6 +14,7 @@
 
 .body {
     background-color: #F5F3ED;
+    padding-top: 100px;
 }
 
 body {
@@ -41,4 +42,10 @@ body {
 .login-background {
   background-color: #F5F3ED;
   padding-bottom: 300px;
+}
+
+.sign-out {
+  background-color: #F5F3ED;
+  padding-top: 300px;
+  align-items: center;
 }
