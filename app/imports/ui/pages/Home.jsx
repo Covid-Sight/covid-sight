@@ -26,57 +26,32 @@ class Home extends React.Component {
     }
 
     return (
-    <div>
-        <NavBar/>                  
-      <div className="home-page" id="home-page">
-        <Grid stackable id='landing-page' textAlign='center' container>
-          <Grid.Column width={4}>
-            <SideBar/>
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <Segment className="home-box" style={isComplete()}>
-              <div align="left">
-                <Header as='h3' textAlign='left'>Daily Health Check-In</Header>
-                <p>Help keep our campus safe by completing your daily health check-in!</p>
-                <List ordered>
-                  <List.Item>
+      <div>
+        <NavBar/>
+        <div className="home-page" id="home-page">
+          <Grid stackable id='landing-page' textAlign='center' container>
+            <Grid.Column width={4}>
+              <SideBar/>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Segment className="home-box" style={isComplete()}>
+                <div align="left">
+                  <Header as='h3' textAlign='left'>Daily Health Check-In</Header>
+                  <p>Help keep our campus safe by completing your daily health check-in!</p>
+                  <List ordered>
+                    <List.Item>
                       Check your symptoms.
-                  </List.Item>
-                  <List.Item>
+                    </List.Item>
+                    <List.Item>
                       Keep track of your symptoms every day.
-                  </List.Item>
-                </List>
-                {/* CHANGE "/add" TO LINK TO CHECK SYMPTOMS PAGE */}
-                <Button className="gold-button" circular inverted icon labelPosition='left'
-                  as={NavLink} exact to="/checkin" key='checkin'>
-                  <Icon name='heart outline'/>
+                    </List.Item>
+                  </List>
+                  {/* CHANGE "/add" TO LINK TO CHECK SYMPTOMS PAGE */}
+                  <Button className="gold-button" circular inverted icon labelPosition='left'
+                    as={NavLink} exact to="/checkin" key='checkin'>
+                    <Icon name='heart outline'/>
                     Check Your Symptoms
-                </Button>
-              </div>
-            </Segment>
-            <Segment className="home-box" style={isComplete()}>
-              <div align="left">
-                <Header as='h3' textAlign='left'>Vaccine Status</Header>
-                <p>You have not uploaded your vaccine information yet!</p>
-                {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
-                <Button className="gold-button" circular inverted icon labelPosition='left'
-                  as={NavLink} exact to="/vaccine" key='check'>
-                  <Icon name='upload'/>
-                    Upload Your Vaccine Information
-                </Button>
-              </div>
-
-            </Segment>
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Segment className="home-box">
-              <div align="left">
-                <Header as='h5' textAlign='left'>Get COVID-19 Testing</Header>
-                <div>
-                  <a href="https://www.clinicallabs.com/appt/uhtest/">UH Provided COVID Testing</a>
-                </div>
-                <div>
-                  <a href="https://www.clinicallabs.com/appt/uhtest/">Other COVID Testing Programs</a>
+                  </Button>
                 </div>
               </Segment>
               <Segment className="home-box" style={isComplete()}>
@@ -87,7 +62,7 @@ class Home extends React.Component {
                   <Button className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/vaccine" key='check'>
                     <Icon name='upload'/>
-                      Upload Your Vaccine Information
+                    Upload Your Vaccine Information
                   </Button>
                 </div>
 
