@@ -60,7 +60,7 @@ class Home extends React.Component {
                   <Header as='h3' textAlign='left'>Vaccine Status</Header>
                   <p>You have not uploaded your vaccine information yet!</p>
                   {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
-                  <Button className="gold-button" circular inverted icon labelPosition='left'
+                  <Button id="add-vaccine" className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/vaccine" key='check'>
                     <Icon name='upload'/>
                     Upload Your Vaccine Information

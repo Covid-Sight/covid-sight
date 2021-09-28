@@ -52,7 +52,7 @@ class AddVaccine extends React.Component {
     return (
       <div>
         <NavBar/>
-        <Grid container centered>
+        <Grid id="add-vaccination" container centered>
           <Grid.Column width={2}>
             <SideBar/>
           </Grid.Column>
@@ -62,14 +62,14 @@ class AddVaccine extends React.Component {
               fRef = ref;
             }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
               <Segment>
-                <TextField name='name'/>
-                <TextField name='patientID'/>
+                <TextField id="name" name='name'/>
+                <TextField id="id" name='patientID'/>
                 <SelectField name='vaccineType'/>
-                <DateField name='dose1'/>
-                <TextField name='clinic1'/>
-                <DateField name='dose2'/>
-                <TextField name='clinic2'/>
-                <SubmitField value='Submit'/>
+                <DateField id="date1" name='dose1'/>
+                <TextField id="clinic1" name='clinic1'/>
+                <DateField id="date2"name='dose2'/>
+                <TextField id="clinic2" name='clinic2'/>
+                <SubmitField id="add" value='Submit'/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>

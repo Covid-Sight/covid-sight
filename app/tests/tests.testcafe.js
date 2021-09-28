@@ -30,8 +30,6 @@ test('Test that signup page shows up', async (testController) => {
 });
 
 test('Test that signed in landing page works and signout work', async (testController) => {
-  // await navBar.gotoSigninPage(testController);
-  // await signinPage.signin(testController, credentials.username, credentials.password);
   await loginPage.isDisplayed(testController);
   await testController.wait(5000);
   await loginPage.login(testController, credentials.username, credentials.password);
