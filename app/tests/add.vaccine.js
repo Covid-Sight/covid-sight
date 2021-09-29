@@ -25,4 +25,4 @@ class AddVaccinePage {
   }
 }
 
-export const addVaccine = new AddVaccinePage();
+export const addVaccinePage = new AddVaccinePage();

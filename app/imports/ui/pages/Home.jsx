@@ -42,7 +42,7 @@ class Home extends React.Component {
                     </List.Item>
                   </List>
                   {/* CHANGE "/add" TO LINK TO CHECK SYMPTOMS PAGE */}
-                  <Button className="gold-button" circular inverted icon labelPosition='left'
+                  <Button id="check-in" className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/checkin" key='checkin'>
                     <Icon name='heart outline'/>
                     Check Your Symptoms
