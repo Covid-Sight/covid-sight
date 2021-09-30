@@ -44,6 +44,9 @@ class AddVaccine extends React.Component {
           formRef.reset();
         }
       });
+    this.setState({
+      isComplete: false,
+    });
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms

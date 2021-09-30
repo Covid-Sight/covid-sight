@@ -5,6 +5,11 @@ import SideBar from '../components/SideBar';
 import NavBar from '../components/NavBar';
 /** Renders the home page for when the user is logged in. */
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isComplete: true };
+  }
+
   render() {
     // Styling for segment box borders
     const incomplete = {
@@ -58,7 +63,8 @@ class Home extends React.Component {
 
                 <div align="left">
                   <Header as='h3' textAlign='left'>Vaccine Status</Header>
-                  <p>You have not uploaded your vaccine information yet!</p>
+                  {this.state.isComplete ? <p>You have not uploaded your vaccine information yet!</p> :
+                    <p>You have uploaded your vaccine information!</p>}
                   {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
                   <Button className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/vaccine" key='check'>
