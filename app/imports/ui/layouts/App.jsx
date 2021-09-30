@@ -14,6 +14,7 @@ import AddVaccine from '../pages/AddVaccine';
 import Checkin from '../pages/Checkin';
 import History from '../pages/History';
 import EditCheck from '../pages/EditCheck';
+import VaccinePage from '../pages/VaccinePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -27,6 +28,7 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute exact path="/home" component={Home}/>
             <ProtectedRoute path="/vaccine" component={AddVaccine}/>
+            <ProtectedRoute path="/vaccine-page" component={VaccinePage}/>
             <ProtectedRoute path="/history" component={History}/>
             <ProtectedRoute path="/checkin" component={Checkin}/>
             <ProtectedRoute path="/edit/:_id" component={EditCheck}/>
