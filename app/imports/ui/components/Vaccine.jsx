@@ -6,16 +6,23 @@ import {
   Segment,
   GridColumn,
   Grid,
+  Button,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { Vaccine } from '../../api/stuff/Vaccine';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Vaccination extends React.Component {
+  removeVaccine(docID) {
+    Vaccine.collection.remove(docID);
+  }
+
   render() {
     const container = {
       borderRadius: '25px',
-      margin: '50px',
+      marginLeft: '50px',
+      marginRight: '50px',
     };
     return (
       <div>
@@ -49,6 +56,11 @@ class Vaccination extends React.Component {
             </GridColumn>
           </Grid>
         </Segment>
+        <a>
+          <Button className="gold-button" style={container} icon onClick={() => this.removeVaccine(this.props.vaccine._id)} size='large' inverted>
+            Delete Vaccine
+          </Button>
+        </a>
       </div>
     );
   }
