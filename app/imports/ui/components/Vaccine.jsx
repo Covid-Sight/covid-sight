@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Vaccine } from '../../api/stuff/Vaccine';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a Vaccination object in the form of a Grid, Segment, and List. See pages/VaccinePage.jsx. */
 class Vaccination extends React.Component {
   removeVaccine(docID) {
     Vaccine.collection.remove(docID);
