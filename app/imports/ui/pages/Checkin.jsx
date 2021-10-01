@@ -40,7 +40,7 @@ class Checkin extends React.Component {
     let fRef = null;
     const spacing = { paddingTop: '50px' };
     return (
-      <Container>
+      <Container id="check-in-page">
         <Header as='h1' style={spacing} textAlign='center'>Do any of the following apply to you?</Header>
         <Grid stackable container>
           <Grid.Column width={2}>

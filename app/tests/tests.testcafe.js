@@ -3,6 +3,9 @@ import { loginPage } from './login.page';
 import { signoutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { navBar } from './navbar.component';
+import { checkInPage } from './check.in';
+import { addVaccinePage } from './add.vaccine';
+import { vaccineSubmissionPage } from './vaccine.submission.page';
 
 /* global fixture:false, test:false */
 
@@ -30,8 +33,6 @@ test('Test that signup page shows up', async (testController) => {
 });
 
 test('Test that signed in landing page works and signout work', async (testController) => {
-  // await navBar.gotoSigninPage(testController);
-  // await signinPage.signin(testController, credentials.username, credentials.password);
   await loginPage.isDisplayed(testController);
   await testController.wait(5000);
   await loginPage.login(testController, credentials.username, credentials.password);
@@ -39,6 +40,38 @@ test('Test that signed in landing page works and signout work', async (testContr
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.gotoHomePage(testController, credentials.username);
   await homePage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('Test that checkin page is displayed', async (testController) => {
+  await loginPage.isDisplayed(testController);
+  await testController.wait(5000);
+  await loginPage.login(testController, credentials.username, credentials.password);
+  await testController.wait(500);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoHomePage(testController, credentials.username);
+  await homePage.isDisplayed(testController);
+  await homePage.goToCheckIn(testController);
+  await checkInPage.isDisplayed(testController);
+  await testController.wait(3000);
+});
+
+test('Test that add vaccine page and vaccine submission pages are displayed', async (testController) => {
+  await loginPage.isDisplayed(testController);
+  await testController.wait(5000);
+  await loginPage.login(testController, credentials.username, credentials.password);
+  await testController.wait(500);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoHomePage(testController, credentials.username);
+  await homePage.isDisplayed(testController);
+  await homePage.goToAddVaccine(testController);
+  await addVaccinePage.isDisplayed(testController);
+  await testController.wait(3000);
+  await navBar.gotoHomePage(testController, credentials.username);
+  await homePage.goToVaccinePage(testController);
+  await vaccineSubmissionPage.isDisplayed(testController);
+  await navBar.gotoHomePage(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
