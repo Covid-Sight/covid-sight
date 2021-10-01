@@ -23,12 +23,23 @@ class Vaccination extends React.Component {
       borderRadius: '25px',
       marginLeft: '50px',
       marginRight: '50px',
+      fontSize: '14px',
+      paddingLeft: '20px',
+    };
+    const button = {
+      borderRadius: '25px',
+      marginLeft: '50px',
+      marginRight: '50px',
+      fontSize: '14px',
+      paddingLeft: '30px',
+      paddingRight: '30px',
     };
     return (
       <div>
         <Segment style={ container }>
           <Grid columns='equal' divided>
             <GridColumn>
+              <Header as='h3' textAlign='center'>Vaccination Card Information</Header>
               <List centered size='large'>
                 <List.Item>
                   <List.Content><Header as='h4'>Name: </Header>{this.props.vaccine.name}</List.Content>
@@ -52,12 +63,12 @@ class Vaccination extends React.Component {
               </List>
             </GridColumn>
             <GridColumn>
-              <Header as='h1'>Image goes here</Header>
+              <Header as='h3' textAlign='center'>Vaccination Card Image</Header>
             </GridColumn>
           </Grid>
         </Segment>
         <a>
-          <Button className="gold-button" style={container} icon onClick={() => this.removeVaccine(this.props.vaccine._id)} size='large' inverted>
+          <Button className="gold-button" style={button} icon onClick={() => this.removeVaccine(this.props.vaccine._id)} size='large' inverted>
             Delete Vaccine
           </Button>
         </a>

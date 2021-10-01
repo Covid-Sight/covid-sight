@@ -68,7 +68,7 @@ class Home extends React.Component {
                   <Button id="vaccine-submission" className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/vaccine-page" key='check'>
                     <Icon name='medkit'/>
-                    Vaccine Submission
+                    View Vaccine
                   </Button>
                 </div>
               </Segment>
