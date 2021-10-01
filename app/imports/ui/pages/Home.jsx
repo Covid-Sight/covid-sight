@@ -42,13 +42,13 @@ class Home extends React.Component {
                     </List.Item>
                   </List>
                   {/* CHANGE "/add" TO LINK TO CHECK SYMPTOMS PAGE */}
-                  <Button className="gold-button" circular inverted icon labelPosition='left'
+                  <Button id="check-in" className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/checkin" key='checkin'>
                     <Icon name='heart outline'/>
                     Check Your Symptoms
                   </Button>
                   <Button className="gold-button" circular inverted icon labelPosition='left'
-                    as={NavLink} exact to="/history" key='checkin'>
+                    as={NavLink} exact to="/history" key='history'>
                     <Icon name='heart outline'/>
                     History
                   </Button>
@@ -60,10 +60,15 @@ class Home extends React.Component {
                   <Header as='h3' textAlign='left'>Vaccine Status</Header>
                   <p>You have not uploaded your vaccine information yet!</p>
                   {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
-                  <Button className="gold-button" circular inverted icon labelPosition='left'
+                  <Button id="add-vaccine" className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/vaccine" key='check'>
                     <Icon name='upload'/>
                     Upload Your Vaccine Information
+                  </Button>
+                  <Button id="vaccine-submission" className="gold-button" circular inverted icon labelPosition='left'
+                    as={NavLink} exact to="/vaccine-page" key='check'>
+                    <Icon name='medkit'/>
+                    View Vaccine
                   </Button>
                 </div>
               </Segment>
