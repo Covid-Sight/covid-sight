@@ -15,6 +15,7 @@ import { _ } from 'meteor/underscore';
 import { Vaccine } from '../../api/stuff/Vaccine';
 import Vaccination from '../components/Vaccine';
 import SideBar from '../components/SideBar';
+import NavBar from '../components/NavBar';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class VaccinePage extends React.Component {
@@ -39,17 +40,20 @@ class VaccinePage extends React.Component {
       return 0;
     });
     return (
-      <Container fluid style={width}>
-        <Grid stackable style={{ paddingTop: '25px' }}>
-          <GridColumn width={1} style={{ paddingTop: '100px' }}>
-            <SideBar/>
-          </GridColumn>
-          <GridColumn width={12}>
-            <Header as="h1" textAlign="center">Vaccine Card Submission</Header>
-            {vacc.map((vaccination) => <Vaccination key={vaccination._id} vaccine={vaccination} Vaccine={Vaccine}/>)}
-          </GridColumn>
-        </Grid>
-      </Container>
+      <div>
+        <NavBar/>
+        <Container id="vaccine-page" fluid style={width}>
+          <Grid stackable style={{ paddingTop: '20px' }}>
+            <GridColumn width={1} style={{ paddingTop: '60px' }}>
+              <SideBar/>
+            </GridColumn>
+            <GridColumn width={12}>
+              <Header as="h1" textAlign="center">Vaccine Card Submission</Header>
+              {vacc.map((vaccination) => <Vaccination key={vaccination._id} vaccine={vaccination} Vaccine={Vaccine}/>)}
+            </GridColumn>
+          </Grid>
+        </Container>
+      </div>
     );
   }
 }
