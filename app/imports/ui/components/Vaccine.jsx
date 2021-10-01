@@ -52,10 +52,10 @@ class Vaccination extends React.Component {
                 </List.Item>
                 <List.Content><Header as='h4'>1st Dose Date:</Header> {this.props.vaccine.dose1.toLocaleDateString('en-US')}</List.Content>
                 <List.Item>
-                  <ListContent><Header as='h4'>1st Does Clinic:</Header> {this.props.vaccine.clinic1}</ListContent>
+                  <ListContent><Header as='h4'>1st Dose Clinic:</Header> {this.props.vaccine.clinic1}</ListContent>
                 </List.Item>
                 <List.Item>
-                  <List.Content><Header as='h4'>2nd Does Date:</Header> {this.props.vaccine.dose2.toLocaleDateString('en-US')}</List.Content>
+                  <List.Content><Header as='h4'>2nd Dose Date:</Header> {this.props.vaccine.dose2.toLocaleDateString('en-US')}</List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Content><Header as='h4'>2nd Dose Clinic:</Header> {this.props.vaccine.clinic2}</List.Content>
