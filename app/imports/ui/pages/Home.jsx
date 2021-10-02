@@ -1,10 +1,21 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Grid, Header, Segment, Button, Icon, List } from 'semantic-ui-react';
+import { Vaccine } from '../../api/stuff/Vaccine';
 import SideBar from '../components/SideBar';
 import NavBar from '../components/NavBar';
+
 /** Renders the home page for when the user is logged in. */
 class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isComplete: true };
+  }
+
   render() {
     // Styling for segment box borders
     const incomplete = {
@@ -15,7 +26,7 @@ class Home extends React.Component {
     };
     // Checks if user completed check-in and vaccine upload
     function isComplete() {
-      if (true) {
+      if (Vaccine.collection.find({}).fetch().length == 0) {
         return incomplete;
       }
       return complete;
@@ -58,7 +69,8 @@ class Home extends React.Component {
 
                 <div align="left">
                   <Header as='h3' textAlign='left'>Vaccine Status</Header>
-                  <p>You have not uploaded your vaccine information yet!</p>
+                   {this.state.isComplete ? <p>You have uploaded your vaccine information!</p> :
+                    <p>You have not uploaded your vaccine information!</p>}
                   {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
                   <Button id="add-vaccine" className="gold-button" circular inverted icon labelPosition='left'
                     as={NavLink} exact to="/vaccine" key='check'>
@@ -103,4 +115,20 @@ class Home extends React.Component {
     );
   }
 }
-export default Home;
+
+// Require an array of Vaccine documents in the props.
+Home.propTypes = {
+  vaccines: PropTypes.array.isRequired,
+};
+
+// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+export default withTracker(() => {
+  // Get access to Vaccine documents.
+  const subscription = Meteor.subscribe(Vaccine.userPublicationName);
+  // Get the Vaccine documents
+  const vaccines = Vaccine.collection.find({}).fetch();
+  console.log(vaccines);
+  return {
+    vaccines,
+  };
+})(Home);
