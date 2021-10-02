@@ -124,10 +124,9 @@ Home.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Vaccine documents.
-  const subscription = Meteor.subscribe(Vaccine.userPublicationName);
+  Meteor.subscribe(Vaccine.userPublicationName);
   // Get the Vaccine documents
   const vaccines = Vaccine.collection.find({}).fetch();
-  console.log(vaccines);
   return {
     vaccines,
   };
