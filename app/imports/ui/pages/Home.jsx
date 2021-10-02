@@ -10,12 +10,6 @@ import NavBar from '../components/NavBar';
 
 /** Renders the home page for when the user is logged in. */
 class Home extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { isComplete: true };
-  }
-
   render() {
     // Styling for segment box borders
     const incomplete = {
@@ -25,8 +19,14 @@ class Home extends React.Component {
       borderColor: 'green',
     };
     // Checks if user completed check-in and vaccine upload
+    function vaccineUpload() {
+      if (Vaccine.collection.find({}).fetch().length === 0) {
+        return false;
+      }
+      return true;
+    }
     function isComplete() {
-      if (Vaccine.collection.find({}).fetch().length == 0) {
+      if (!vaccineUpload()) {
         return incomplete;
       }
       return complete;
@@ -69,7 +69,7 @@ class Home extends React.Component {
 
                 <div align="left">
                   <Header as='h3' textAlign='left'>Vaccine Status</Header>
-                   {this.state.isComplete ? <p>You have uploaded your vaccine information!</p> :
+                  {vaccineUpload() ? <p>You have uploaded your vaccine information!</p> :
                     <p>You have not uploaded your vaccine information!</p>}
                   {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
                   <Button id="add-vaccine" className="gold-button" circular inverted icon labelPosition='left'
