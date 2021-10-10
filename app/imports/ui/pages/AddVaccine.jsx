@@ -1,9 +1,13 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
+// import { _ } from 'meteor/underscore';
 import { AutoForm, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+// import { CloudinaryContext } from 'cloudinary-react';
+import Axios from 'axios';
+import FormData from 'form-data';
 import SimpleSchema from 'simpl-schema';
 import { Vaccine } from '../../api/stuff/Vaccine.js';
 import SideBar from '../components/SideBar';
@@ -49,6 +53,18 @@ class AddVaccine extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
     let fRef = null;
+    const uploadImage = (files) => {
+      console.log(files[0]);
+      const formData = new FormData();
+      formData.append('file', files[0]);
+      formData.append('cloud_name', 'glarita');
+      formData.append('upload_preset', 'q57x0i8n');
+
+      Axios.post('https://api.cloudinary.com/v1_1/glarita/image/upload', formData).then((response) => {
+        console.log(response);
+      });
+    };
+
     return (
       <div>
         <NavBar/>
@@ -67,8 +83,16 @@ class AddVaccine extends React.Component {
                 <SelectField name='vaccineType'/>
                 <DateField id="date1" name='dose1'/>
                 <TextField id="clinic1" name='clinic1'/>
-                <DateField id="date2"name='dose2'/>
+                <DateField id="date2" name='dose2'/>
                 <TextField id="clinic2" name='clinic2'/>
+                <input
+                  type="file"
+                  name="file"
+                  placeholder="Upload an Image"
+                  onChange={(event) => {
+                    uploadImage(event.target.files);
+                  }}
+                />
                 <SubmitField id="add" value='Submit'/>
                 <ErrorsField/>
               </Segment>

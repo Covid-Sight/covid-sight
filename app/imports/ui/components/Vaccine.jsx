@@ -8,6 +8,7 @@ import {
   Grid,
   Button,
 } from 'semantic-ui-react';
+import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Vaccine } from '../../api/stuff/Vaccine';
@@ -33,6 +34,10 @@ class Vaccination extends React.Component {
       fontSize: '14px',
       paddingLeft: '30px',
       paddingRight: '30px',
+    };
+    const image = {
+      borderRadius: '15px',
+      width: 575,
     };
     return (
       <div>
@@ -63,7 +68,7 @@ class Vaccination extends React.Component {
               </List>
             </GridColumn>
             <GridColumn>
-              <Header as='h3' textAlign='center'>Vaccination Card Image</Header>
+              <Image cloudName='glarita' publicId='https://res.cloudinary.com/glarita/image/upload/v1633856439/ngcepr0igzyfmvsjauyf.png' rounded fluid style={image}/>
             </GridColumn>
           </Grid>
         </Segment>
