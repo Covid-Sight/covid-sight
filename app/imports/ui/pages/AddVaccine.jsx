@@ -101,7 +101,8 @@ class AddVaccine extends React.Component {
                     uploadImage(event.target.files);
                   }}
                 />
-                <SubmitField style={{ marginTop: '15px' }} id="add" value='Submit'/>
+                <Header as='h5' style={{ marginTop: '0px', color: 'red' }}>Notice: Image size must be under 10 MB and must be a PNG or JPEG. </Header>
+                <SubmitField style={{ marginTop: '0px' }} id="add" value='Submit'/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>

@@ -37,7 +37,8 @@ class Vaccination extends React.Component {
     };
     const image = {
       borderRadius: '15px',
-      width: 575,
+      maxWidth: '100%',
+      height: 'auto',
     };
     return (
       <div>
@@ -67,7 +68,7 @@ class Vaccination extends React.Component {
                 </List.Item>
               </List>
             </GridColumn>
-            <GridColumn>
+            <GridColumn width={6}>
               <Image src={this.props.vaccine.image} rounded fluid style={image}/>
             </GridColumn>
           </Grid>
