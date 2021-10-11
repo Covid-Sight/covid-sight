@@ -1,19 +1,19 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-// import { _ } from 'meteor/underscore';
 import { AutoForm, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-// import { CloudinaryContext } from 'cloudinary-react';
 import Axios from 'axios';
 import FormData from 'form-data';
+// import { v2 as cloudinary } from 'cloudinary';
 import SimpleSchema from 'simpl-schema';
 import { Vaccine } from '../../api/stuff/Vaccine.js';
 import SideBar from '../components/SideBar';
 import NavBar from '../components/NavBar';
 
 // Create a schema to specify the structure of the data to appear in the form.
+
 const formSchema = new SimpleSchema({
   name: String,
   patientID: { type: String, optional: true },
@@ -32,13 +32,20 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 class AddVaccine extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageURL: '',
+    };
+  }
 
   // On submit, insert the data.
   submit(data, formRef) {
     const { name, patientID, vaccineType, dose1, clinic1, dose2, clinic2 } = data;
     const owner = Meteor.user().username;
+    const image = this.state.imageURL;
     // added owner field in (was giving an ESLint error. WIll need to check with Eric -Glen
-    Vaccine.collection.insert({ name, patientID, vaccineType, dose1, clinic1, dose2, clinic2, owner },
+    Vaccine.collection.insert({ name, patientID, vaccineType, dose1, clinic1, dose2, clinic2, image, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -53,15 +60,15 @@ class AddVaccine extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
     let fRef = null;
+
     const uploadImage = (files) => {
-      console.log(files[0]);
       const formData = new FormData();
       formData.append('file', files[0]);
       formData.append('cloud_name', 'glarita');
       formData.append('upload_preset', 'q57x0i8n');
-
       Axios.post('https://api.cloudinary.com/v1_1/glarita/image/upload', formData).then((response) => {
-        console.log(response);
+        console.log(response.data.url);
+        this.setState({ imageURL: response.data.url });
       });
     };
 
@@ -86,6 +93,7 @@ class AddVaccine extends React.Component {
                 <DateField id="date2" name='dose2'/>
                 <TextField id="clinic2" name='clinic2'/>
                 <input
+                  style={{ marginTop: '10px' }}
                   type="file"
                   name="file"
                   placeholder="Upload an Image"
@@ -93,10 +101,12 @@ class AddVaccine extends React.Component {
                     uploadImage(event.target.files);
                   }}
                 />
-                <SubmitField id="add" value='Submit'/>
+                <SubmitField style={{ marginTop: '15px' }} id="add" value='Submit'/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>
+          </Grid.Column>
+          <Grid.Column>
           </Grid.Column>
         </Grid>
       </div>

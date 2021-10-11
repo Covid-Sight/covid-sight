@@ -7,8 +7,8 @@ import {
   GridColumn,
   Grid,
   Button,
+  Image,
 } from 'semantic-ui-react';
-import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Vaccine } from '../../api/stuff/Vaccine';
@@ -68,7 +68,7 @@ class Vaccination extends React.Component {
               </List>
             </GridColumn>
             <GridColumn>
-              <Image cloudName='glarita' publicId='https://res.cloudinary.com/glarita/image/upload/v1633856439/ngcepr0igzyfmvsjauyf.png' rounded fluid style={image}/>
+              <Image src={this.props.vaccine.image} rounded fluid style={image}/>
             </GridColumn>
           </Grid>
         </Segment>
