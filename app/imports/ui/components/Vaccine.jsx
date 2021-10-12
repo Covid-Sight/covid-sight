@@ -37,11 +37,9 @@ class Vaccination extends React.Component {
     };
     const image = {
       borderRadius: '15px',
-      maxWidth: '100%',
-      height: 'auto',
     };
     return (
-      <div>
+      <div style={{ paddingTop: '15px' }}>
         <Segment style={ container }>
           <Grid columns='equal' divided>
             <GridColumn>
