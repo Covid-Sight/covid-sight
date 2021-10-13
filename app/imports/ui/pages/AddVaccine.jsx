@@ -67,14 +67,16 @@ class AddVaccine extends React.Component {
     // Function for uploading an image. Creates a Form Data that is used to construct the cloudinary account name and
     // upload preset, and also appends the file that is retrieved by the user input. Then Axios post method will send
     // the form data to the cloudinary url upload. After image url is generated it is retrieved and stored into mongodb.
-    const uploadImage = (files) => {
-      const formData = new FormData();
-      formData.append('file', files[0]);
-      formData.append('cloud_name', 'glarita');
-      formData.append('upload_preset', 'q57x0i8n');
-      Axios.post('https://api.cloudinary.com/v1_1/glarita/image/upload', formData).then((res) => {
-        console.log(res.data.url);
-        this.setState({ imageURL: res.data.url });
+    // Reference: PedroTech, 08/10/21, "How to Upload Images in ReactJS using Cloudinary Tutorial",
+    // https://www.youtube.com/watch?v=Y-VgaRwWS3o
+    const uploadImg = (files) => {
+      const data = new FormData();
+      data.append('file', files[0]);
+      data.append('cloud_name', 'glarita');
+      data.append('upload_preset', 'q57x0i8n');
+      Axios.post('https://api.cloudinary.com/v1_1/glarita/image/upload', data).then((r) => {
+        console.log(r.data.url);
+        this.setState({ imageURL: r.data.url });
       });
     };
 
@@ -105,7 +107,7 @@ class AddVaccine extends React.Component {
                   name="file"
                   placeholder="Upload an Image"
                   onChange={(event) => {
-                    uploadImage(event.target.files);
+                    uploadImg(event.target.files);
                   }}
                 />
                 <Header as='h5' style={{ marginTop: '0px', color: 'red' }}> Image size must be under 10 MB and must be a PNG or JPEG. </Header>
