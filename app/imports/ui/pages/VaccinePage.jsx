@@ -6,8 +6,6 @@ import {
   GridColumn,
   Header,
   Loader,
-  // eslint-disable-next-line no-unused-vars
-  Segment,
 } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';

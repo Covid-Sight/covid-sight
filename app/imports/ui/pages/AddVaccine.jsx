@@ -4,14 +4,20 @@ import { AutoForm, ErrorsField, DateField, SelectField, SubmitField, TextField }
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import Axios from 'axios';
-import FormData from 'form-data';
+// import Axios from 'axios';
+// import FormData from 'form-data';
+// import { v2 as cloudinary } from 'cloudinary';
 import SimpleSchema from 'simpl-schema';
 import { Vaccine } from '../../api/stuff/Vaccine.js';
 import SideBar from '../components/SideBar';
 import NavBar from '../components/NavBar';
 
 // Create a schema to specify the structure of the data to appear in the form.
+
+require('dotenv').config();
+const cloudinary = require('cloudinary').v2;
+
+console.log(cloudinary.config().cloud_name);
 
 const formSchema = new SimpleSchema({
   name: String,
@@ -70,14 +76,13 @@ class AddVaccine extends React.Component {
     // Reference: PedroTech, 08/10/21, "How to Upload Images in ReactJS using Cloudinary Tutorial",
     // https://www.youtube.com/watch?v=Y-VgaRwWS3o
     const uploadImg = (files) => {
-      const data = new FormData();
-      data.append('file', files[0]);
-      data.append('cloud_name', 'glarita');
-      data.append('upload_preset', 'q57x0i8n');
-      Axios.post('https://api.cloudinary.com/v1_1/glarita/image/upload', data).then((r) => {
-        console.log(r.data.url);
-        this.setState({ imageURL: r.data.url });
-      });
+      cloudinary.uploader
+        .upload(files[0], {
+          resource_type: 'image',
+        }).then((result) => {
+        // eslint-disable-next-line no-console
+          console.log(JSON.stringify(result));
+        });
     };
 
     return (
