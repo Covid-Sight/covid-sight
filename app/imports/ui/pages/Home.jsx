@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { _ } from 'meteor/underscore';
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Grid, Header, Segment, Button, Icon, List } from 'semantic-ui-react';
 import { Vaccine } from '../../api/stuff/Vaccine';
+import { Check } from'../../api/stuff/Check';
 import SideBar from '../components/SideBar';
 import NavBar from '../components/NavBar';
 
@@ -14,19 +15,23 @@ class Home extends React.Component {
     // Styling for segment box borders
     const incomplete = {
       borderColor: '#E20000',
+      borderWidth: '2px'
     };
     const complete = {
       borderColor: 'green',
+      borderWidth: '2px'
     };
-    // Checks if user completed check-in and vaccine upload
+    // Checks if user completed vaccine upload and daily check-in 
     function vaccineUpload() {
       if (Vaccine.collection.find({}).fetch().length === 0) {
-        return false;
+        return incomplete;
       }
-      return true;
+      return complete;
     }
     function isComplete() {
-      if (!vaccineUpload()) {
+      var currentDay = new Date().toDateString();
+      var checkIns = Check.collection.find({}).fetch();
+      if (_.find(checkIns, function(checkin){ return checkin.date }) === undefined) {
         return incomplete;
       }
       return complete;
@@ -65,11 +70,11 @@ class Home extends React.Component {
                   </Button>
                 </div>
               </Segment>
-              <Segment className="home-box" style={isComplete()}>
+              <Segment className="home-box" style={vaccineUpload()}>
 
                 <div align="left">
                   <Header as='h3' textAlign='left'>Vaccine Status</Header>
-                  {vaccineUpload() ? <p>You have uploaded your vaccine information!</p> :
+                  {(vaccineUpload() === complete) ? <p>You have uploaded your vaccine information!</p> :
                     <p>You have not uploaded your vaccine information!</p>}
                   {/* CHANGE "/add" TO LINK TO UPLOAD VACCINE PAGE */}
                   <Button id="add-vaccine" className="gold-button" circular inverted icon labelPosition='left'
@@ -116,18 +121,19 @@ class Home extends React.Component {
   }
 }
 
-// Require an array of Vaccine documents in the props.
-Home.propTypes = {
-  vaccines: PropTypes.array.isRequired,
-};
-
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Vaccine documents.
+  // Get access to Vaccine and Check documents.
   Meteor.subscribe(Vaccine.userPublicationName);
-  // Get the Vaccine documents
+  Meteor.subscribe(Check.userPublicationName);
+
+  // Get the Vaccine and Check documents
   const vaccines = Vaccine.collection.find({}).fetch();
+  const checkins = Check.collection.find({}).fetch();
+  console.log(checkins);
+
   return {
     vaccines,
+    checkins
   };
 })(Home);
