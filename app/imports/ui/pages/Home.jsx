@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Grid, Header, Segment, Button, Icon, List } from 'semantic-ui-react';
 import { Vaccine } from '../../api/stuff/Vaccine';
-import { Check } from'../../api/stuff/Check';
+import { Check } from '../../api/stuff/Check';
 import SideBar from '../components/SideBar';
 import NavBar from '../components/NavBar';
 
@@ -15,23 +15,24 @@ class Home extends React.Component {
     // Styling for segment box borders
     const incomplete = {
       borderColor: '#E20000',
-      borderWidth: '2px'
+      borderWidth: '2px',
     };
     const complete = {
       borderColor: 'green',
-      borderWidth: '2px'
+      borderWidth: '2px',
     };
-    // Checks if user completed vaccine upload and daily check-in 
+    // Checks if user completed vaccine upload and daily check-in
     function vaccineUpload() {
       if (Vaccine.collection.find({}).fetch().length === 0) {
         return incomplete;
       }
       return complete;
     }
-    function isComplete() {
-      var currentDay = new Date().toDateString();
-      var checkIns = Check.collection.find({}).fetch();
-      if (_.find(checkIns, function(checkin){ return checkin.date }) === undefined) {
+    function checkIn() {
+      let currentDay = new Date().toDateString();
+      let checkCollection = Check.collection.find({}).fetch();
+      let checkHistory = _.find(checkCollection, function (checkin) { return new Date(checkin.date).toDateString() === currentDay; });
+      if (checkHistory === undefined) {
         return incomplete;
       }
       return complete;
@@ -45,7 +46,7 @@ class Home extends React.Component {
               <SideBar/>
             </Grid.Column>
             <Grid.Column width={8}>
-              <Segment className="home-box" style={isComplete()}>
+              <Segment className="home-box" style={checkIn()}>
                 <div align="left">
                   <Header as='h3' textAlign='left'>Daily Health Check-In</Header>
                   <p>Help keep our campus safe by completing your daily health check-in!</p>
@@ -130,10 +131,9 @@ export default withTracker(() => {
   // Get the Vaccine and Check documents
   const vaccines = Vaccine.collection.find({}).fetch();
   const checkins = Check.collection.find({}).fetch();
-  console.log(checkins);
 
   return {
     vaccines,
-    checkins
+    checkins,
   };
 })(Home);
