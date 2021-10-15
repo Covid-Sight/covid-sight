@@ -7,6 +7,7 @@ import {
   GridColumn,
   Grid,
   Button,
+  Image,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -34,8 +35,11 @@ class Vaccination extends React.Component {
       paddingLeft: '30px',
       paddingRight: '30px',
     };
+    const image = {
+      borderRadius: '15px',
+    };
     return (
-      <div>
+      <div style={{ paddingTop: '15px' }}>
         <Segment style={ container }>
           <Grid columns='equal' divided>
             <GridColumn>
@@ -62,8 +66,8 @@ class Vaccination extends React.Component {
                 </List.Item>
               </List>
             </GridColumn>
-            <GridColumn>
-              <Header as='h3' textAlign='center'>Vaccination Card Image</Header>
+            <GridColumn width={6}>
+              <Image src={this.props.vaccine.image} rounded fluid style={image}/>
             </GridColumn>
           </Grid>
         </Segment>
